@@ -1,4 +1,7 @@
-import './App.css';
+import "./App.css";
+import { Home } from ".components/Home/Home";
+import { AddUSer } from ".components/AddUser/AddUser";
+import { EditUser } from ".components/EditUser/EditUser";
 
 function App() {
   return (
