@@ -1,14 +1,13 @@
 import "./App.css";
-import { Home } from ".components/Home/Home";
-import { AddUSer } from ".components/AddUser/AddUser";
-import { EditUser } from ".components/EditUser/EditUser";
+import { useNavigate, useRoutes } from "react-router-dom";
+import { getRoutes } from "pages/routes";
 
 function App() {
-  return (
-    <div className="App">
-      <h1>App</h1>
-    </div>
-  );
+  const appRoutesElement = useRoutes(getRoutes());
+
+  useNavigate("/home");
+
+  return appRoutesElement
 }
 
 export default App;
