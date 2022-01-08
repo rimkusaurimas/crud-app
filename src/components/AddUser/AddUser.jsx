@@ -36,7 +36,7 @@ export const AddUser = () => {
             Address
           </InputGroup.Text>
           <Form.Control
-            placeholder="Somewhere st. 1 , USA"
+            placeholder="Somewhere st. 1"
             aria-label="Address"
             required
           />

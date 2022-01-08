@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { UserList } from "../UserList/UserList";
 import styles from "./main-page.module.scss";
 
 export const MainPage = () => {
@@ -14,6 +15,7 @@ export const MainPage = () => {
           </Button>
         </Link>
       </section>
+      <UserList />
       <p>No users yet..</p>
     </div>
   );
