@@ -1,0 +1,20 @@
+@import "../../styles/index.scss";
+
+.mainWidget {
+    display: flex;
+    min-width: 30rem;
+    justify-content: space-between;
+    border: 0.1rem solid $primary-color;
+    padding: $default-padding;
+    align-items: center;
+    border-radius: 0.25rem;
+
+    &Title {
+        margin: 0;
+    }
+
+    &Button {
+        text-transform: uppercase;
+        font-family: $default-font;
+    }
+}

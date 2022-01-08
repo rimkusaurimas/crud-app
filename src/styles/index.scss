@@ -1,14 +1,13 @@
 @charset "utf-8";
-
-@import 'base';
+@import "base";
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    font-family: $default-font;
-    color: $default-font-color;
+  font-family: $default-font;
+  color: $primary-color;
 }
