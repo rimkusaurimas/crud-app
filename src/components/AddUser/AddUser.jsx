@@ -30,6 +30,16 @@ export const AddUser = () => {
     setEmail(e.target.value);
   };
 
+  const handleSubmit = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setValidated(true);
+  };
+  
   const addUser = (e) => {
     e.preventDefault();
     setUsers((prevUsers) => [
@@ -43,16 +53,6 @@ export const AddUser = () => {
         id: nextID(),
       },
     ]);
-  };
-
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    setValidated(true);
   };
 
   return (
@@ -124,9 +124,9 @@ export const AddUser = () => {
             aria-label="Country"
             required
           >
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <option value={"1"}>One</option>
+            <option value={"2"}>Two</option>
+            <option value={"3"}>Three</option>
           </Form.Select>
         </div>
         <Button className={styles.addUserButton} type="submit">

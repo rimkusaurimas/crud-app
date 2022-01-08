@@ -16,7 +16,6 @@ export const MainPage = () => {
         </Link>
       </section>
       <UserList />
-      <p>No users yet..</p>
     </div>
   );
 };

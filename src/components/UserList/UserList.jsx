@@ -6,6 +6,7 @@ import { UserContext } from "../../features/context/UserContext";
 export const UserList = () => {
   const [users, setUsers] = useContext(UserContext);
   return (
+    <div>
       <ListGroup>
         {users.map((user) => (
           <SingleUser
@@ -17,6 +18,8 @@ export const UserList = () => {
             key={user.id}
           />
         ))}
+        {users.length === 0 && <p>No users yet..</p>}
       </ListGroup>
+    </div>
   );
 };
