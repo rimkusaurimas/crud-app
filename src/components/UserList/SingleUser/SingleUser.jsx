@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, { useContext} from "react";
 import { Link } from "react-router-dom";
 import { ListGroupItem, Button } from "reactstrap";
+import { UserContext } from "../../../features/context/UserContext";
 
-export const SingleUser = ({name, lastName, address, country, email}) => {
+export const SingleUser = ({name, lastName, address, country, remove, email, id}) => {
+  const [users, setUsers] = useContext(UserContext);
   return (
     <ListGroupItem className="d-flex justify-content-between align-items-center mt-3 border rounded">
       <div className="d-flex flex-column justify-content-between">
@@ -11,10 +13,10 @@ export const SingleUser = ({name, lastName, address, country, email}) => {
         <p className="my-1">{email}</p>
       </div>
       <div className="ml-auto">
-        <Link className="btn btn-dark me-1" to={"/edit-user"}>
+        <Link className="btn btn-dark me-1" to={`edit-user/${id}`}>
           Edit
         </Link>
-        <Button color="danger">Delete</Button>
+        <Button onClick={remove} color="danger">Delete</Button>
       </div>
     </ListGroupItem>
   );

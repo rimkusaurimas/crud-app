@@ -7,10 +7,11 @@ import styles from "./add-user.module.scss";
 
 export const AddUser = () => {
   const [validated, setValidated] = useState(false);
+  const [validationOk, setValidationOk] = useState(false);
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState("Lithuania");
   const [email, setEmail] = useState("");
   const [users, setUsers] = useContext(UserContext);
 
@@ -32,32 +33,39 @@ export const AddUser = () => {
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
+    const re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-
+    event.preventDefault();
     setValidated(true);
-  };
-  
-  const addUser = (e) => {
-    e.preventDefault();
-    setUsers((prevUsers) => [
-      ...prevUsers,
-      {
-        name: name,
-        lastName: lastName,
-        address: address,
-        country: country,
-        email: email,
-        id: nextID(),
-      },
-    ]);
+    if (
+      name.length &&
+      lastName.length &&
+      address.length &&
+      email.length &&
+      re.test(email)
+    ) {
+      setUsers((prevUsers) => [
+        ...prevUsers,
+        {
+          name: name,
+          lastName: lastName,
+          address: address,
+          country: country,
+          email: email,
+          id: nextID(),
+        },
+      ]);
+    }
   };
 
   return (
     <section className={styles.addUser}>
-      <Form noValidate validated={validated} onSubmit={(handleSubmit, addUser)}>
+      <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <InputGroup className="mb-3">
           <InputGroup.Text className={styles.addUserFieldText}>
             First name
