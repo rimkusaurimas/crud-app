@@ -10,6 +10,7 @@ export const UserList = () => {
       address: "Kauno g. 1",
       country: "Lietuva",
       email: "labas@aurimasrimkus.lt",
+      id: 1,
     },
     {
       name: "Linas",
@@ -17,6 +18,7 @@ export const UserList = () => {
       address: "Vilniaus g. 1",
       country: "Lietuva",
       email: "labas@linai.lt",
+      id: 2,
     },
   ]);
   return (
@@ -28,6 +30,7 @@ export const UserList = () => {
           address={user.address}
           country={user.country}
           email={user.email}
+          key={user.id}
         />
       ))}
     </ListGroup>
