@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { ListGroup } from "reactstrap";
 import { SingleUser } from "./SingleUser/SingleUser";
 import { UserContext } from "../../features/context/UserContext";

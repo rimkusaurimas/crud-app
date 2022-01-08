@@ -124,9 +124,9 @@ export const AddUser = () => {
             aria-label="Country"
             required
           >
-            <option value={"1"}>One</option>
-            <option value={"2"}>Two</option>
-            <option value={"3"}>Three</option>
+            <option value={"Lithuania"}>Lithuania</option>
+            <option value={"UK"}>UK</option>
+            <option value={"Armenia"}>Armenia</option>
           </Form.Select>
         </div>
         <Button className={styles.addUserButton} type="submit">

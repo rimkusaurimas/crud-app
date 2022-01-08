@@ -67,7 +67,7 @@ export const EditUser = () => {
             <option value="3">Three</option>
           </Form.Select>
         </div>
-        <Button className={styles.editUserButton} type="submit">Update user</Button>
+        <Button className={styles.editUserButton} type="submit">Add user</Button>
       </Form>
       <div>
         <Link to={"/"}>
