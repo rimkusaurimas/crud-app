@@ -1,10 +1,19 @@
 import React, { useContext } from "react";
 import { ListGroup } from "reactstrap";
 import { SingleUser } from "./SingleUser/SingleUser";
-import { UserContext, removeUser } from "../../features/context/UserContext";
+import { UserContext } from "../../features/context/UserContext";
 
 export const UserList = () => {
   const [users, setUsers] = useContext(UserContext);
+
+  const handleRemove = (index) => {
+    setUsers(() => {
+      const user = [...users];
+      user.splice(index, 1);
+      return user;
+    });
+  };
+
   return (
     <div>
       <ListGroup>
@@ -17,7 +26,7 @@ export const UserList = () => {
             email={user.email}
             key={user.id}
             id={user.id}
-            remove={removeUser}
+            remove={handleRemove}
           />
         ))}
         {users.length === 0 && <p>No users to show..</p>}

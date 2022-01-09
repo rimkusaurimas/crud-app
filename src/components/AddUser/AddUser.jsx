@@ -8,11 +8,10 @@ import styles from "./add-user.module.scss";
 
 export const AddUser = () => {
   const [validated, setValidated] = useState(false);
-  const [validationOk, setValidationOk] = useState(false);
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
-  const [country, setCountry] = useState("Lithuania");
+  const [countries, setCountries] = useState("");
   const [email, setEmail] = useState("");
   const [users, setUsers] = useContext(UserContext);
 
@@ -27,8 +26,8 @@ export const AddUser = () => {
   const updateAddress = (e) => {
     setAddress(e.target.value);
   };
-  const updateCountry = (e) => {
-    setCountry(e.target.value);
+  const updateCountries = (e) => {
+    setCountries(e.target.value);
   };
   const updateEmail = (e) => {
     setEmail(e.target.value);
@@ -56,7 +55,7 @@ export const AddUser = () => {
           name: name,
           lastName: lastName,
           address: address,
-          country: country,
+          countries: countries,
           email: email,
           id: nextID(),
         },
@@ -126,17 +125,15 @@ export const AddUser = () => {
             Country
           </Form.Label>
           <Form.Select
-            onChange={updateCountry}
-            value={country}
-            name="country"
+            onChange={updateCountries}
+            value={countries}
+            name="countries"
             className={styles.addUserCountrySelect}
-            id="country"
-            aria-label="Country"
+            id="countries"
+            aria-label="Countries"
             required
           >
-            <option value={"Lithuania"}>Lithuania</option>
-            <option value={"UK"}>UK</option>
-            <option value={"Armenia"}>Armenia</option>
+            <option value="Lithuania">Lithuania</option>
           </Form.Select>
         </div>
         <Button className={styles.addUserButton} type="submit">
