@@ -3,6 +3,7 @@ import nextID from "react-id-generator";
 import { UserContext } from "../../features/context/UserContext";
 import { Button, InputGroup, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import { validate } from "react-email-validator";
 import styles from "./add-user.module.scss";
 
 export const AddUser = () => {
@@ -46,7 +47,8 @@ export const AddUser = () => {
       name.length &&
       lastName.length &&
       address.length &&
-      email.length
+      email.length &&
+      validate(email)
     ) {
       setUsers((prevUsers) => [
         ...prevUsers,
