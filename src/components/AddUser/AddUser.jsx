@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import nextID from "react-id-generator";
 import { UserContext } from "../../features/context/UserContext";
 import { Button, InputGroup, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./add-user.module.scss";
 
 export const AddUser = () => {
@@ -14,6 +14,8 @@ export const AddUser = () => {
   const [country, setCountry] = useState("Lithuania");
   const [email, setEmail] = useState("");
   const [users, setUsers] = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const updateName = (e) => {
     setName(e.target.value);
@@ -33,8 +35,6 @@ export const AddUser = () => {
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
-    const re =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -46,8 +46,7 @@ export const AddUser = () => {
       name.length &&
       lastName.length &&
       address.length &&
-      email.length &&
-      re.test(email)
+      email.length
     ) {
       setUsers((prevUsers) => [
         ...prevUsers,
@@ -60,6 +59,7 @@ export const AddUser = () => {
           id: nextID(),
         },
       ]);
+      navigate("/");
     }
   };
 
