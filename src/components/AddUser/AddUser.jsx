@@ -12,7 +12,7 @@ export const AddUser = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
-  const [countries, setCountries] = useState(0);
+  const [countries, setCountries] = useState();
   const [email, setEmail] = useState("");
   const [users, setUsers] = useContext(UserContext);
 
@@ -48,7 +48,7 @@ export const AddUser = () => {
   const handleSubmit = (event) => {
     const form = event.currentTarget;
 
-    if (form.checkValidity() === false) {
+    if (form.checkValidity() === false ) {
       event.preventDefault();
       event.stopPropagation();
     }
@@ -59,7 +59,8 @@ export const AddUser = () => {
       lastName.length &&
       address.length &&
       email.length &&
-      validate(email)
+      validate(email) &&
+      !countries === undefined
     ) {
       setUsers((prevUsers) => [
         ...prevUsers,
@@ -75,8 +76,6 @@ export const AddUser = () => {
       navigate("/");
     }
   };
-
-  console.log(countries);
 
   return (
     <section className={styles.addUser}>
@@ -147,6 +146,7 @@ export const AddUser = () => {
             aria-label="Countries"
             required
           >
+            <option className={styles.addUserCountrySelect} value="">Select a country..</option>
             {data.map((country) => (
               <option className={styles.addUserCountrySelect} key={country} value={country}>{country}</option>
             ))}
