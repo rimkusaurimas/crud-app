@@ -1,6 +1,8 @@
 @import "../../styles/_base.scss";
 
 .addUser {
+  max-width: 23rem;
+
   &FieldText {
     width: 8rem;
   }
@@ -9,6 +11,8 @@
     display: flex;
     align-items: center;
     margin-top: 1rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 
     &Title {
       display: flex;
@@ -25,14 +29,15 @@
       border-radius: 0.25rem;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
-      width: 12rem;
+      width: 12.2rem !important;
       margin: 0 !important;
+      border-right: none !important;
     }
-
+    
     &Select {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      border-left: none;
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+      width: 15rem !important;
     }
   }
 

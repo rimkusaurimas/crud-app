@@ -12,17 +12,20 @@ export const AddUser = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
-  const [countries, setCountries] = useState("");
+  const [countries, setCountries] = useState(0);
   const [email, setEmail] = useState("");
   const [users, setUsers] = useContext(UserContext);
 
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios.get("https://restcountries.com/v3.1/all").then((response) => {
-      setData(response.data[0].name.official)
+      const countryList = response.data.map((countries) => {
+        return countries.name.common
+      });
+      setData(...data, countryList);
     });
-  });
+  }, []);
 
   const navigate = useNavigate();
 
@@ -72,6 +75,8 @@ export const AddUser = () => {
       navigate("/");
     }
   };
+
+  console.log(countries);
 
   return (
     <section className={styles.addUser}>
@@ -142,7 +147,9 @@ export const AddUser = () => {
             aria-label="Countries"
             required
           >
-            <option value="Lithuania">{data}</option>
+            {data.map((country) => (
+              <option className={styles.addUserCountrySelect} key={country} value={country}>{country}</option>
+            ))}
           </Form.Select>
         </div>
         <Button className={styles.addUserButton} type="submit">
