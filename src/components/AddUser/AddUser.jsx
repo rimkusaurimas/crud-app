@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
 import nextID from "react-id-generator";
 import { UserContext } from "../../features/context/UserContext";
 import { Button, InputGroup, Form } from "react-bootstrap";
@@ -14,6 +15,14 @@ export const AddUser = () => {
   const [countries, setCountries] = useState("");
   const [email, setEmail] = useState("");
   const [users, setUsers] = useContext(UserContext);
+
+  const [data, setData] = useState("");
+
+  useEffect(() => {
+    axios.get("https://restcountries.com/v3.1/all").then((response) => {
+      setData(response.data[0].name.official)
+    });
+  });
 
   const navigate = useNavigate();
 
@@ -133,7 +142,7 @@ export const AddUser = () => {
             aria-label="Countries"
             required
           >
-            <option value="Lithuania">Lithuania</option>
+            <option value="Lithuania">{data}</option>
           </Form.Select>
         </div>
         <Button className={styles.addUserButton} type="submit">
