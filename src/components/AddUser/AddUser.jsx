@@ -67,7 +67,7 @@ export const AddUser = () => {
           name: name,
           lastName: lastName,
           address: address,
-          countries: countries,
+          country: countries,
           email: email,
           id: nextID(),
         },
