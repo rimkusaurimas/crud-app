@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useContext } from "react";
 import nextID from "react-id-generator";
 import { UserContext } from "../../features/context/UserContext";
 import { Button, InputGroup, Form } from "react-bootstrap";
@@ -16,8 +15,6 @@ export const EditUser = () => {
   const [email, setEmail] = useState("");
   const [users, setUsers] = useContext(UserContext);
 
-  const navigate = useNavigate();
-
   const updateName = (e) => {
     setName(e.target.value);
   };
@@ -33,6 +30,10 @@ export const EditUser = () => {
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
+
+  const navigate = useNavigate();
+
+  // console.log(users[0].id);
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -61,6 +62,7 @@ export const EditUser = () => {
           id: nextID(),
         },
       ]);
+      console.log(users);
       navigate("/");
     }
   };
@@ -76,7 +78,7 @@ export const EditUser = () => {
             onChange={updateName}
             value={name}
             name="name"
-            placeholder="John"
+            placeholder={name}
             aria-label="First name"
             required
           />
@@ -89,7 +91,7 @@ export const EditUser = () => {
             onChange={updateLastName}
             value={lastName}
             name="lastName"
-            placeholder="Doe"
+            placeholder={lastName}
             aria-label="Last name"
             required
           />
@@ -102,7 +104,7 @@ export const EditUser = () => {
             onChange={updateAddress}
             value={address}
             name="address"
-            placeholder="Somewhere st. 1"
+            placeholder={address}
             aria-label="Address"
             required
           />
@@ -116,7 +118,7 @@ export const EditUser = () => {
             value={email}
             name="email"
             type="email"
-            placeholder="name@example.com"
+            placeholder={email}
             aria-label="Email"
             required
           />
