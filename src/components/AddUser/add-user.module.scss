@@ -17,7 +17,7 @@
     &Title {
       align-items: center;
       background-color: $tertiary-color;
-      border-bottom-right-radius: 0;
+      border-bottom-right-radius: 0 !important;
       border-radius: 0.25rem;
       border-right: none !important;
       border-top-right-radius: 0;

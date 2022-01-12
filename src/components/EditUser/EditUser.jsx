@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
 import nextID from "react-id-generator";
 import { UserContext } from "../../features/context/UserContext";
 import { Button, InputGroup, Form } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { validate } from "react-email-validator";
 import styles from "./edit-user.module.scss";
 
@@ -11,9 +12,24 @@ export const EditUser = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
-  const [countries, setCountries] = useState("");
+  const [countries, setCountries] = useState();
   const [email, setEmail] = useState("");
   const [users, setUsers] = useContext(UserContext);
+
+  const { id } = useParams();
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get("https://restcountries.com/v3.1/all").then((response) => {
+      const countryList = response.data.map((countries) => {
+        return countries.name.common;
+      });
+      setData(...data, countryList);
+    });
+  }, []);
+
+  const navigate = useNavigate();
 
   const updateName = (e) => {
     setName(e.target.value);
@@ -31,10 +47,6 @@ export const EditUser = () => {
     setEmail(e.target.value);
   };
 
-  const navigate = useNavigate();
-
-  // console.log(users[0].id);
-
   const handleSubmit = (event) => {
     const form = event.currentTarget;
 
@@ -49,68 +61,59 @@ export const EditUser = () => {
       lastName.length &&
       address.length &&
       email.length &&
-      validate(email)
+      validate(email) &&
+      countries !== undefined
     ) {
-      setUsers((prevUsers) => [
-        ...prevUsers,
-        {
-          name: name,
-          lastName: lastName,
-          address: address,
-          countries: countries,
-          email: email,
-          id: nextID(),
-        },
-      ]);
-      console.log(users);
+      const findUser = () => users.filter((user) => !(user.id === id));
+      setUsers();
       navigate("/");
     }
   };
 
   return (
-    <section className={styles.addUser}>
+    <section className={styles.editUser}>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <InputGroup className="mb-3">
-          <InputGroup.Text className={styles.addUserFieldText}>
+          <InputGroup.Text className={styles.editUserFieldText}>
             First name
           </InputGroup.Text>
           <Form.Control
             onChange={updateName}
             value={name}
             name="name"
-            placeholder={name}
+            placeholder="John"
             aria-label="First name"
             required
           />
         </InputGroup>
         <InputGroup className="mb-3">
-          <InputGroup.Text className={styles.addUserFieldText}>
+          <InputGroup.Text className={styles.editUserFieldText}>
             Last name
           </InputGroup.Text>
           <Form.Control
             onChange={updateLastName}
             value={lastName}
             name="lastName"
-            placeholder={lastName}
+            placeholder="Doe"
             aria-label="Last name"
             required
           />
         </InputGroup>
         <InputGroup className="mb-3">
-          <InputGroup.Text className={styles.addUserFieldText}>
+          <InputGroup.Text className={styles.editUserFieldText}>
             Address
           </InputGroup.Text>
           <Form.Control
             onChange={updateAddress}
             value={address}
             name="address"
-            placeholder={address}
+            placeholder="Somewhere st. 1"
             aria-label="Address"
             required
           />
         </InputGroup>
         <InputGroup>
-          <InputGroup.Text className={styles.addUserFieldText}>
+          <InputGroup.Text className={styles.editUserFieldText}>
             Email
           </InputGroup.Text>
           <Form.Control
@@ -118,34 +121,45 @@ export const EditUser = () => {
             value={email}
             name="email"
             type="email"
-            placeholder={email}
+            placeholder="name@example.com"
             aria-label="Email"
             required
           />
         </InputGroup>
-        <div className={styles.addUserCountry}>
-          <Form.Label className={styles.addUserCountryTitle} htmlFor="country">
+        <div className={styles.editUserCountry}>
+          <Form.Label className={styles.editUserCountryTitle} htmlFor="country">
             Country
           </Form.Label>
           <Form.Select
             onChange={updateCountries}
             value={countries}
             name="countries"
-            className={styles.addUserCountrySelect}
+            className={styles.editUserCountrySelect}
             id="countries"
             aria-label="Countries"
             required
           >
-            <option value="Lithuania">Lithuania</option>
+            <option className={styles.editUserCountrySelect} value="">
+              Select a country..
+            </option>
+            {data.map((country) => (
+              <option
+                className={styles.editUserCountrySelect}
+                key={country}
+                value={country}
+              >
+                {country}
+              </option>
+            ))}
           </Form.Select>
         </div>
-        <Button className={styles.addUserButton} type="submit">
+        <Button className={styles.editUserButton} type="submit">
           Update user
         </Button>
       </Form>
       <div>
         <Link to={"/"}>
-          <Button className={styles.addUserCancelButton} variant="dark">
+          <Button className={styles.editUserCancelButton} variant="dark">
             cancel
           </Button>
         </Link>

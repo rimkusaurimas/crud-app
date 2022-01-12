@@ -14,7 +14,7 @@ export const SingleUser = ({name, lastName, address, country, remove, email, id}
         <Link className="btn btn-dark me-1" to={`edit-user/${id}`}>
           Edit
         </Link>
-        <Button id={id} onClick={remove} color="danger">Delete</Button>
+        <Button id={id} onClick={() => remove(id)} color="danger">Delete</Button>
       </div>
     </ListGroupItem>
   );

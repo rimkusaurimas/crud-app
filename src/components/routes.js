@@ -13,7 +13,7 @@ export const getRoutes = () => [
     children: [
       { index: true, element: <MainPage />, name: "main-page" },
       { path: "/add-user", element: <AddUser />, name: "add-user" },
-      { path: "/edit-user/*", element: <EditUser />, name: "edit-user" },
+      { path: "/edit-user/:id", element: <EditUser />, name: "edit-user" },
     ],
   },
   { path: "/*", element: <NotFound /> },
