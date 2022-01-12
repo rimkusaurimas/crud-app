@@ -147,7 +147,7 @@ export const AddUser = () => {
             required
           >
             <option className={styles.addUserCountrySelect} value="">Select a country..</option>
-            {data.map((country) => (
+            {data.sort().map((country) => (
               <option className={styles.addUserCountrySelect} key={country} value={country}>{country}</option>
             ))}
           </Form.Select>

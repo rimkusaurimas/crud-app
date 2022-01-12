@@ -10,6 +10,8 @@ export const UserList = () => {
     setUsers(users.filter((user) => !(user.id === id)));
   };
 
+  users.sort((a, b) => a.name.localeCompare(b.name));
+
   return (
     <div>
       <ListGroup>

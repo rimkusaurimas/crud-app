@@ -14,6 +14,15 @@ export const UserProvider = (props) => {
       id: "aurimas-rimkus",
     },
     {
+      name: "Petras",
+      lastName: "Petraitis",
+      address: "Vilniaus g.",
+      country: "Greece",
+      email: "labas@petrai.lt",
+      key: "petras-petraitis",
+      id: "petras-petraitis",
+    },
+    {
       name: "Jonas",
       lastName: "Jonaitis",
       address: "Kauno g.",
@@ -23,14 +32,14 @@ export const UserProvider = (props) => {
       id: "jonas-jonaitis",
     },
     {
-      name: "Petras",
-      lastName: "Petraitis",
-      address: "Vilniaus g.",
-      country: "Greece",
-      email: "labas@petrai.lt",
-      key: "petras-petraitis",
-      id: "petras-petraitis",
-    }
+      name: "Deividas",
+      lastName: "Ponaitis",
+      address: "Panevėžio g.",
+      country: "Germany",
+      email: "labas@deivi.lt",
+      key: "deividas-ponaitis",
+      id: "deividas-ponaitis",
+    },
   ]);
 
   return (

@@ -156,7 +156,7 @@ export const EditUser = () => {
             <option className={styles.editUserCountrySelect} value="">
               {currentUser[0].country}
             </option>
-            {data.map((country) => (
+            {data.sort().map((country) => (
               <option
                 className={styles.editUserCountrySelect}
                 key={country}
