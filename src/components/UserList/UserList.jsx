@@ -1,11 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ListGroup } from "reactstrap";
 import { SingleUser } from "./SingleUser/SingleUser";
 import { UserContext } from "../../features/context/UserContext";
 
 export const UserList = () => {
   const [users, setUsers] = useContext(UserContext);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [objPerPage, setObjPerPage] = useState(2);
 
+  const indexOfLastObj = currentPage * objPerPage;
+  const indexOfFirstObj = indexOfLastObj - objPerPage;
+  const currentObj = users.slice(indexOfFirstObj, indexOfLastObj);
+
+  console.log(currentObj);
   const handleRemove = (id) => {
     setUsers(users.filter((user) => !(user.id === id)));
   };
@@ -15,7 +22,7 @@ export const UserList = () => {
   return (
     <div>
       <ListGroup>
-        {users.map((user) => (
+        {currentObj.map((user) => (
           <SingleUser
             name={user.name}
             lastName={user.lastName}
