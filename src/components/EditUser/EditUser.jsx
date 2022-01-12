@@ -17,7 +17,7 @@ export const EditUser = () => {
   const [users, setUsers] = useContext(UserContext);
 
   const { id } = useParams();
-  const currentUser = users.filter((user) => (user.id === id))
+  const currentUser = users.filter((user) => user.id === id);
 
   const [data, setData] = useState([]);
 
