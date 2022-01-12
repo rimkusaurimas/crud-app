@@ -64,8 +64,21 @@ export const EditUser = () => {
       validate(email) &&
       countries !== undefined
     ) {
-      const findUser = () => users.filter((user) => !(user.id === id));
-      setUsers();
+      const handleRemove = (id) => {
+        setUsers(users.filter((user) => !(user.id === id)));
+      };
+      handleRemove(id);
+      setUsers((prevUsers) => [
+        ...prevUsers,
+        {
+          name: name,
+          lastName: lastName,
+          address: address,
+          country: countries,
+          email: email,
+          id: nextID(),
+        },
+      ]);
       navigate("/");
     }
   };

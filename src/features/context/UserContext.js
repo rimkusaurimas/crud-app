@@ -21,6 +21,15 @@ export const UserProvider = (props) => {
       email: "labas@jonai.lt",
       key: "jonas-jonaitis",
       id: "jonas-jonaitis",
+    },
+    {
+      name: "Petras",
+      lastName: "Petraitis",
+      address: "Vilniaus g.",
+      country: "Lithuania",
+      email: "labas@petrai.lt",
+      key: "petras-petraitis",
+      id: "petras-petraitis",
     }
   ]);
 
