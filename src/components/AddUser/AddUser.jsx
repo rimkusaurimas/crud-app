@@ -60,7 +60,7 @@ export const AddUser = () => {
       address.length &&
       email.length &&
       validate(email) &&
-      !countries === undefined
+      countries !== undefined
     ) {
       setUsers((prevUsers) => [
         ...prevUsers,
