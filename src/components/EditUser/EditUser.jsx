@@ -17,6 +17,7 @@ export const EditUser = () => {
   const [users, setUsers] = useContext(UserContext);
 
   const { id } = useParams();
+  const currentUser = users.filter((user) => (user.id === id))
 
   const [data, setData] = useState([]);
 
@@ -94,8 +95,8 @@ export const EditUser = () => {
             onChange={updateName}
             value={name}
             name="name"
-            placeholder="John"
-            aria-label="First name"
+            placeholder={currentUser[0].name}
+            aria-label={currentUser[0].name}
             required
           />
         </InputGroup>
@@ -107,8 +108,8 @@ export const EditUser = () => {
             onChange={updateLastName}
             value={lastName}
             name="lastName"
-            placeholder="Doe"
-            aria-label="Last name"
+            placeholder={currentUser[0].lastName}
+            aria-label={currentUser[0].lastName}
             required
           />
         </InputGroup>
@@ -120,8 +121,8 @@ export const EditUser = () => {
             onChange={updateAddress}
             value={address}
             name="address"
-            placeholder="Somewhere st. 1"
-            aria-label="Address"
+            placeholder={currentUser[0].address}
+            aria-label={currentUser[0].address}
             required
           />
         </InputGroup>
@@ -134,8 +135,8 @@ export const EditUser = () => {
             value={email}
             name="email"
             type="email"
-            placeholder="name@example.com"
-            aria-label="Email"
+            placeholder={currentUser[0].email}
+            aria-label={currentUser[0].email}
             required
           />
         </InputGroup>
@@ -145,7 +146,7 @@ export const EditUser = () => {
           </Form.Label>
           <Form.Select
             onChange={updateCountries}
-            value={countries}
+            value={currentUser[0].country}
             name="countries"
             className={styles.editUserCountrySelect}
             id="countries"
@@ -153,7 +154,7 @@ export const EditUser = () => {
             required
           >
             <option className={styles.editUserCountrySelect} value="">
-              Select a country..
+              {currentUser[0].country}
             </option>
             {data.map((country) => (
               <option
