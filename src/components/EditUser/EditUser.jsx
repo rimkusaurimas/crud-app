@@ -146,7 +146,7 @@ export const EditUser = () => {
           </Form.Label>
           <Form.Select
             onChange={updateCountries}
-            value={currentUser[0].country}
+            value={countries}
             name="countries"
             className={styles.editUserCountrySelect}
             id="countries"
@@ -154,7 +154,7 @@ export const EditUser = () => {
             required
           >
             <option className={styles.addUserCountrySelect} value="">
-              Select a country..
+              {currentUser[0].country}
             </option>
             {data.sort().map((country) => (
               <option
