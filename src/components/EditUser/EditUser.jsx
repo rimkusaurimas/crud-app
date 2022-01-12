@@ -153,8 +153,8 @@ export const EditUser = () => {
             aria-label="Countries"
             required
           >
-            <option className={styles.editUserCountrySelect} value="">
-              {currentUser[0].country}
+            <option className={styles.addUserCountrySelect} value="">
+              Select a country..
             </option>
             {data.sort().map((country) => (
               <option
