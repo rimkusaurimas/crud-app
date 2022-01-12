@@ -2,11 +2,12 @@ import React, { useContext, useState } from "react";
 import { ListGroup } from "reactstrap";
 import { SingleUser } from "./SingleUser/SingleUser";
 import { UserContext } from "../../features/context/UserContext";
+import {Pagination} from "../Pagination";
 
 export const UserList = () => {
   const [users, setUsers] = useContext(UserContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const [objPerPage, setObjPerPage] = useState(2);
+  const [objPerPage, setObjPerPage] = useState(1);
 
   const indexOfLastObj = currentPage * objPerPage;
   const indexOfFirstObj = indexOfLastObj - objPerPage;
@@ -36,6 +37,7 @@ export const UserList = () => {
         ))}
         {users.length === 0 && <p>No users to show..</p>}
       </ListGroup>
+      <Pagination objPerPage={objPerPage} totalObj={users.length} />
     </div>
   );
 };
