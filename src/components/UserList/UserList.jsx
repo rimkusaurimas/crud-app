@@ -17,13 +17,10 @@ export const UserList = () => {
   const indexOfFirstObj = indexOfLastObj - objPerPage;
   const currentObj = users.slice(indexOfFirstObj, indexOfLastObj);
 
-  console.log(currentObj);
   const handleRemove = (id) => {
     setUsers(users.filter((user) => !(user.id === id)));
   };
   users.sort((a, b) => a.name.localeCompare(b.name));
-
-  console.log(currentObj);
 
   return (
     <div>

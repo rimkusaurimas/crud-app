@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./pagination.module.scss";
 
 export const Pagination = ({ objPerPage, totalObj, paginate }) => {
   const pageNumbers = [];
@@ -19,7 +20,7 @@ export const Pagination = ({ objPerPage, totalObj, paginate }) => {
                 paginate(number);
               }}
               href={"!#"}
-              className="page-link"
+              className={`page-link ${styles.paginationPageLink}`}
             >
               {number}
             </Link>
