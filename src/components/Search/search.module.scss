@@ -1,0 +1,31 @@
+@import "../../styles/_base.scss";
+
+$hover-color: #e9ecef;
+$bootstrap-black: #212529;
+
+.search {
+  margin-top: 1rem;
+  max-height: 8rem;
+  display: flex;
+
+  &Input {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    margin-right: -0.1rem;
+  }
+
+  &Button {
+    text-transform: uppercase !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-color: $primary-color !important;
+    background: $bootstrap-black !important;
+    font-family: $default-font !important;
+    line-height: 0 !important;
+    height: 3rem !important;
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.2) !important;
+    }
+  }
+}

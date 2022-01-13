@@ -3,6 +3,7 @@ import { ListGroup } from "reactstrap";
 import { SingleUser } from "./SingleUser/SingleUser";
 import { UserContext } from "../../features/context/UserContext";
 import { Pagination } from "../Pagination";
+import { Search } from "../Search";
 
 export const UserList = () => {
   const [users, setUsers] = useContext(UserContext);
@@ -24,6 +25,7 @@ export const UserList = () => {
 
   return (
     <div>
+      <Search />
       <ListGroup>
         {currentObj.map((user) => (
           <SingleUser
