@@ -21,7 +21,7 @@ export const AddUser = () => {
   useEffect(() => {
     axios.get("https://restcountries.com/v3.1/all").then((response) => {
       const countryList = response.data.map((countries) => {
-        return countries.name.common
+        return countries.name.common;
       });
       setData(...data, countryList);
     });
@@ -48,7 +48,7 @@ export const AddUser = () => {
   const handleSubmit = (event) => {
     const form = event.currentTarget;
 
-    if (form.checkValidity() === false ) {
+    if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
@@ -146,9 +146,17 @@ export const AddUser = () => {
             aria-label="Countries"
             required
           >
-            <option className={styles.addUserCountrySelect} value="">Select a country..</option>
+            <option className={styles.addUserCountrySelect} value="">
+              Select a country..
+            </option>
             {data.sort().map((country) => (
-              <option className={styles.addUserCountrySelect} key={country} value={country}>{country}</option>
+              <option
+                className={styles.addUserCountrySelect}
+                key={country}
+                value={country}
+              >
+                {country}
+              </option>
             ))}
           </Form.Select>
         </div>

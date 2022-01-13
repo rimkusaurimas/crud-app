@@ -17,7 +17,7 @@ export const MainPage = () => {
       </section>
       <UserList />
       {users.length === 0 && (
-        <p className="text-center mb-3">No users to show...</p>
+        <p className="text-center mt-3">No users to show...</p>
       )}
     </div>
   );

@@ -15,7 +15,7 @@ export const UserProvider = (props) => {
     },
     {
       name: "Petras",
-      lastName: "Petraitis",
+      lastName: "Letraitis",
       address: "Vilniaus g.",
       country: "Greece",
       email: "labas@petrai.lt",
