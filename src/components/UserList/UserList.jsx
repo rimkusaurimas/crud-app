@@ -39,7 +39,6 @@ export const UserList = () => {
             remove={handleRemove}
           />
         ))}
-        {users.length === 0 && <p>No users to show..</p>}
       </ListGroup>
       <Pagination
         objPerPage={objPerPage}

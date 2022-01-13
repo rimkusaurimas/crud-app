@@ -173,7 +173,7 @@ export const EditUser = () => {
       </Form>
       <div>
         <Link to={"/"}>
-          <Button className={styles.editUserCancelButton} variant="dark">
+          <Button className={styles.editUserCancelButton} variant="secondary">
             cancel
           </Button>
         </Link>

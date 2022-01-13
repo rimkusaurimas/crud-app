@@ -158,7 +158,7 @@ export const AddUser = () => {
       </Form>
       <div>
         <Link to={"/"}>
-          <Button className={styles.addUserCancelButton} variant="dark">
+          <Button className={styles.addUserCancelButton} variant="secondary">
             cancel
           </Button>
         </Link>

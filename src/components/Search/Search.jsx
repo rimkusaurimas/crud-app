@@ -18,7 +18,7 @@ export const Search = () => {
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
-        <Form.Group className={styles.search} controlId="formBasicEmail">
+        <Form.Group className="mt-3 d-flex" controlId="formBasicEmail">
           <Form.Control
             className={styles.searchInput}
             type="text"
@@ -27,7 +27,7 @@ export const Search = () => {
             aria-describedby="passwordHelpBlock"
             required
           />
-          <Button variant="secondary text-uppercase" type="submit" className={styles.searchButton}>
+          <Button variant="primary text-uppercase" type="submit" className={styles.searchButton}>
             search
           </Button>
         </Form.Group>
