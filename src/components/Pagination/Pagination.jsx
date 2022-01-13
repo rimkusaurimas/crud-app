@@ -11,7 +11,7 @@ export const Pagination = ({ objPerPage, totalObj, paginate }) => {
 
   return (
     <nav>
-      <ul className="pagination mt-3">
+      <ul className="pagination mt-3 d-flex justify-content-center">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
             <Link

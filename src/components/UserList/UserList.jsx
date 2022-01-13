@@ -40,11 +40,13 @@ export const UserList = () => {
           />
         ))}
       </ListGroup>
-      <Pagination
-        objPerPage={objPerPage}
-        totalObj={users.length}
-        paginate={paginate}
-      />
+      {users.length > objPerPage && (
+        <Pagination
+          objPerPage={objPerPage}
+          totalObj={users.length}
+          paginate={paginate}
+        />
+      )}
     </div>
   );
 };
