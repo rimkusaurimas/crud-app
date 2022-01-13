@@ -27,7 +27,7 @@ export const Search = () => {
             aria-describedby="passwordHelpBlock"
             required
           />
-          <Button type="submit" className={styles.searchButton}>
+          <Button variant="primary text-uppercase" type="submit" className={styles.searchButton}>
             search
           </Button>
         </Form.Group>
