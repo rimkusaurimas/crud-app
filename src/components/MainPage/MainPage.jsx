@@ -10,7 +10,7 @@ export const MainPage = () => {
       <section className={styles.mainWidget}>
         <h2 className={styles.mainWidgetTitle}>People</h2>
         <Link to={"/add-user"}>
-          <Button className={styles.mainWidgetButton} variant="dark">
+          <Button variant="primary text-uppercase">
             add user
           </Button>
         </Link>
