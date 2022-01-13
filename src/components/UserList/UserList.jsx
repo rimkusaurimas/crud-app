@@ -23,6 +23,8 @@ export const UserList = () => {
   };
   users.sort((a, b) => a.name.localeCompare(b.name));
 
+  console.log(currentObj);
+
   return (
     <div>
       <ListGroup>

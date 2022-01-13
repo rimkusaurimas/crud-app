@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Pagination = ({ objPerPage, totalObj, paginate }) => {
   const pageNumbers = [];
@@ -7,18 +8,21 @@ export const Pagination = ({ objPerPage, totalObj, paginate }) => {
     pageNumbers.push(i);
   }
 
-  const href = (e) => {
-      e.preventDefault();
-  }
-
   return (
     <nav>
       <ul className="pagination mt-3">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
-            <a onClick={() => paginate(number)} href={href} className="page-link">
+            <Link
+              to={""}
+              onClick={() => {
+                paginate(number);
+              }}
+              href={"!#"}
+              className="page-link"
+            >
               {number}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
