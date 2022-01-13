@@ -8,7 +8,7 @@ export const MainPage = () => {
   return (
     <div>
       <section className={styles.mainWidget}>
-        <h2 className={styles.mainWidgetTitle}>People</h2>
+        <h2 className={styles.mainWidgetTitle}>Add yourself ➜</h2>
         <Link to={"/add-user"}>
           <Button variant="primary text-uppercase">
             add user

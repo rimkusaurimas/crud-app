@@ -9,7 +9,7 @@ export const UserList = () => {
   const [users, setUsers] = useContext(UserContext);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [objPerPage] = useState(2);
+  const [objPerPage] = useState(3);
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };

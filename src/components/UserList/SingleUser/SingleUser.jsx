@@ -24,7 +24,7 @@ export const SingleUser = ({
       </div>
       <div className="ml-auto">
         <Link to={`edit-user/${id}`}>
-          <Button color="warning" className="btn me-1 text-uppercase">Edit</Button>
+          <Button color="secondary" className="btn me-1 text-uppercase">Edit</Button>
         </Link>
         <Button
           className="btn text-uppercase"
