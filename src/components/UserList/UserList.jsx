@@ -22,38 +22,62 @@ export const UserList = () => {
   const indexOfLastObj = currentPage * objPerPage;
   const indexOfFirstObj = indexOfLastObj - objPerPage;
   const usersCurrentObj = users?.slice(indexOfFirstObj, indexOfLastObj);
-  const searchedUsersCurrentObj = searchResults?.slice(indexOfFirstObj, indexOfLastObj);
+  const searchedUsersCurrentObj = searchResults?.slice(
+    indexOfFirstObj,
+    indexOfLastObj
+  );
 
   const handleRemove = (id) => {
     setUsers(users.filter((user) => !(user.id === id)));
   };
-  
+
   users.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <div>
       <Search search={handleSearch} />
       <ListGroup>
-        {usersCurrentObj.map((user) => (
-          <SingleUser
-            name={user.name}
-            lastName={user.lastName}
-            address={user.address}
-            country={user.country}
-            email={user.email}
-            key={user.id}
-            id={user.id}
-            remove={handleRemove}
-          />
-        ))}
+        {searchResults !== undefined
+          ? searchedUsersCurrentObj?.map((user) => (
+              <SingleUser
+                name={user.name}
+                lastName={user.lastName}
+                address={user.address}
+                country={user.country}
+                email={user.email}
+                key={user.id}
+                id={user.id}
+                remove={handleRemove}
+              />
+            ))
+          : usersCurrentObj.map((user) => (
+              <SingleUser
+                name={user.name}
+                lastName={user.lastName}
+                address={user.address}
+                country={user.country}
+                email={user.email}
+                key={user.id}
+                id={user.id}
+                remove={handleRemove}
+              />
+            ))}
       </ListGroup>
-      {users.length > objPerPage && (
-        <Pagination
-          objPerPage={objPerPage}
-          totalObj={users.length}
-          paginate={paginate}
-        />
-      )}
+      {searchResults !== undefined
+        ? searchResults.length > objPerPage && (
+            <Pagination
+              objPerPage={objPerPage}
+              totalObj={searchResults.length}
+              paginate={paginate}
+            />
+          )
+        : users.length > objPerPage && (
+            <Pagination
+              objPerPage={objPerPage}
+              totalObj={users.length}
+              paginate={paginate}
+            />
+          )}
     </div>
   );
 };
