@@ -42,17 +42,15 @@ export const UserList = () => {
   return (
     <>
       <Search search={handleSearch} />
-      {searchResults !== undefined &&
-        searchTerm.length !== 0 &&
-        users.length !== searchResults.length && (
-          <Button
-            className="mt-3 d-flex justify-content-center text-uppercase w-100"
-            variant="secondary"
-            onClick={resetSearch}
-          >
-            Back to all users
-          </Button>
-        )}
+      {searchResults !== undefined && users.length !== searchResults?.length && (
+        <Button
+          className="mt-3 d-flex justify-content-center text-uppercase w-100"
+          variant="secondary"
+          onClick={resetSearch}
+        >
+          Back to all users
+        </Button>
+      )}
       <ListGroup>
         {searchResults !== undefined
           ? searchedUsersCurrentObj?.map((user) => (

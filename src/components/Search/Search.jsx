@@ -21,14 +21,17 @@ export const Search = (props) => {
 
   const handleSearch = (event) => {
     const form = event.currentTarget;
-    if (form.checkValidity() === false && searchTerm === "") {
+    if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
     event.preventDefault();
     props.search(searchedObj);
+    setSearchTerm("");
     setValidated(true);
   };
+
+  console.log(searchTerm);
 
   return (
     <>
@@ -37,6 +40,7 @@ export const Search = (props) => {
           <Form.Control
             className={styles.searchInput}
             type="text"
+            value={searchTerm}
             placeholder="Type something..."
             id="search"
             aria-describedby="passwordHelpBlock"
