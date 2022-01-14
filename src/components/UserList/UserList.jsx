@@ -12,12 +12,14 @@ export const UserList = () => {
   // Search
   const [searchTerm, setSearchTerm] = useContext(SearchResultsContext);
   const [searchResults, setSearchResults] = useState();
+  const [searchHistory, setSearchHistory] = useState("");
   const handleSearch = (searchResults) => {
     if (
-      (searchResults?.length !== users.length && searchTerm !== undefined) ||
+      (searchResults?.length !== users.length && searchResults !== undefined) ||
       searchTerm !== ""
     ) {
       setSearchResults(searchResults);
+      setSearchHistory(searchTerm);
     }
   };
   const resetSearch = () => {
@@ -40,7 +42,7 @@ export const UserList = () => {
   // User delete
   const handleRemove = (id) => {
     if (
-      (searchResults?.length !== users.length && searchTerm !== undefined) ||
+      (searchResults?.length !== users.length && searchResults !== undefined) ||
       searchTerm !== ""
     ) {
       setSearchResults(searchResults.filter((user) => !(user.id === id)));
@@ -49,9 +51,6 @@ export const UserList = () => {
   };
   // User sorting by name
   users.sort((a, b) => a.name.localeCompare(b.name));
-
-  console.log(searchResults?.length);
-  console.log(users.length);
 
   return (
     <>
@@ -107,9 +106,9 @@ export const UserList = () => {
               paginate={paginate}
             />
           )}
-      {searchResults?.length === 0 && (
+      {searchResults?.length === 0 && searchHistory !== "" && (
         <p className="text-center mt-3">
-          User "{searchTerm}" cannot be found...
+          User "{searchHistory}" cannot be found...
         </p>
       )}
     </>
