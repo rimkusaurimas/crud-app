@@ -9,7 +9,7 @@ import { Search } from "../Search";
 
 export const UserList = () => {
   const [users, setUsers] = useContext(UserContext);
-  const [searchTerm, setSearchTerm] = useContext(SearchResultsContext);
+  const [searchTerm] = useContext(SearchResultsContext);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [objPerPage] = useState(3);
@@ -20,6 +20,9 @@ export const UserList = () => {
   const [searchResults, setSearchResults] = useState();
   const handleSearch = (searchResults) => {
     setSearchResults(searchResults);
+  };
+  const resetSearch = () => {
+    setSearchResults();
   };
 
   const indexOfLastObj = currentPage * objPerPage;
@@ -45,6 +48,7 @@ export const UserList = () => {
           <Button
             className="mt-3 d-flex justify-content-center text-uppercase w-100"
             variant="secondary"
+            onClick={resetSearch}
           >
             Back to all users
           </Button>
