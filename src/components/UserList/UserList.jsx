@@ -13,7 +13,12 @@ export const UserList = () => {
   const [searchTerm, setSearchTerm] = useContext(SearchResultsContext);
   const [searchResults, setSearchResults] = useState();
   const handleSearch = (searchResults) => {
-    setSearchResults(searchResults);
+    if (
+      (searchResults?.length !== users.length && searchTerm !== undefined) ||
+      searchTerm !== ""
+    ) {
+      setSearchResults(searchResults);
+    }
   };
   const resetSearch = () => {
     setSearchTerm("");
@@ -38,6 +43,9 @@ export const UserList = () => {
   };
   // User sorting by name
   users.sort((a, b) => a.name.localeCompare(b.name));
+
+  console.log(searchResults?.length);
+  console.log(users.length);
 
   return (
     <>
