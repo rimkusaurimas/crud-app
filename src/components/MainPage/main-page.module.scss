@@ -1,15 +1,28 @@
 @import "../../styles/_base.scss";
 
-.mainWidget {
+@media only screen and (max-width: 768px) {
+  .mobile {
     display: flex;
-    min-width: 30rem;
-    justify-content: space-between;
-    border: 0.1rem solid $primary-color;
-    padding: $default-padding;
-    align-items: center;
-    border-radius: 0.25rem;
+    justify-content: center;
+    flex-direction: column;
+    width: 90%;
+  }
+}
 
-    &Title {
-        margin: 0;
-    }
+.mainWidget {
+  display: flex;
+  min-width: 30rem;
+  justify-content: space-between;
+  border: 0.1rem solid $primary-color;
+  padding: $default-padding;
+  align-items: center;
+  border-radius: 0.25rem;
+
+  @media only screen and (max-width: 768px) {
+    min-width: unset;
+  }
+
+  &Title {
+    margin: 0;
+  }
 }

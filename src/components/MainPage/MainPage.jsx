@@ -8,7 +8,7 @@ import { UserContext } from "../../features/context/UserContext";
 export const MainPage = () => {
   const [users] = useContext(UserContext);
   return (
-    <div>
+    <div className={styles.mobile}>
       <section className={styles.mainWidget}>
         <h2 className={styles.mainWidgetTitle}>Add yourself ➜</h2>
         <Link to={"/add-user"}>

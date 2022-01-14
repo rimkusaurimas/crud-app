@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ListGroupItem, Button } from "reactstrap";
+import styles from "./single-user.module.scss";
 
 export const SingleUser = ({
   name,
@@ -22,9 +23,11 @@ export const SingleUser = ({
         </p>
         <p className="my-1">{email}</p>
       </div>
-      <div className="ml-auto">
-        <Link to={`edit-user/${id}`}>
-          <Button color="secondary" className="btn me-1 text-uppercase">Edit</Button>
+      <div className={`ml-auto ${styles.buttons}`}>
+        <Link className="w-100" to={`edit-user/${id}`}>
+          <Button color="secondary" className={`btn me-1 text-uppercase ${styles.buttonsEdit}`}>
+            Edit
+          </Button>
         </Link>
         <Button
           className="btn text-uppercase"

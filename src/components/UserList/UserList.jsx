@@ -32,6 +32,12 @@ export const UserList = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  // console.log(currentPage);
+  // console.log(objPerPage);
+  // console.log(users.length);
+  // console.log(searchResults?.length);
+
   const indexOfLastObj = currentPage * objPerPage;
   const indexOfFirstObj = indexOfLastObj - objPerPage;
   const usersCurrentObj = users?.slice(indexOfFirstObj, indexOfLastObj);
