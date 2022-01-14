@@ -4,21 +4,11 @@ import { SearchResultsContext } from "../../features/context/StatesContext";
 import { Form, Button } from "react-bootstrap";
 import { UserContext } from "../../features/context/UserContext";
 
-export const Search = () => {
+export const Search = (props) => {
   const [validated, setValidated] = useState(false);
-  const [searchTerm, setSearchTerm] = useContext(SearchResultsContext);
-  const [users, setUsers] = useContext(UserContext);
+  const [users] = useContext(UserContext);
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false && searchTerm === "") {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    event.preventDefault();
-    setUsers(searchedObj);
-    setValidated(true);
-  };
+  const [searchTerm, setSearchTerm] = useContext(SearchResultsContext);
 
   const searchedObj = users.filter((val) => {
     if (
@@ -29,11 +19,20 @@ export const Search = () => {
     }
   });
 
-  console.log(searchedObj);
+  const handleSearch = (event) => {
+    const form = event.currentTarget;
+    if (form.checkValidity() === false && searchTerm === "") {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    event.preventDefault();
+    props.search(searchedObj);
+    setValidated(true);
+  };
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Form noValidate validated={validated} onSubmit={handleSearch}>
         <Form.Group className="mt-3 d-flex">
           <Form.Control
             className={styles.searchInput}

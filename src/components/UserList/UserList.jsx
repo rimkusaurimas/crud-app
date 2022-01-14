@@ -2,13 +2,11 @@ import React, { useContext, useState } from "react";
 import { ListGroup } from "reactstrap";
 import { SingleUser } from "./SingleUser/SingleUser";
 import { UserContext } from "../../features/context/UserContext";
-import { SearchResultsContext } from "../../features/context/StatesContext";
 import { Pagination } from "../Pagination";
 import { Search } from "../Search";
 
 export const UserList = () => {
   const [users, setUsers] = useContext(UserContext);
-  const [searchTerm, setSearchTerm] = useContext(SearchResultsContext);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [objPerPage] = useState(3);
@@ -16,20 +14,27 @@ export const UserList = () => {
     setCurrentPage(pageNumber);
   };
 
+  const [searchResults, setSearchResults] = useState();
+  const handleSearch = (searchResults) => {
+    setSearchResults(searchResults);
+  };
+
   const indexOfLastObj = currentPage * objPerPage;
   const indexOfFirstObj = indexOfLastObj - objPerPage;
-  const currentObj = users.slice(indexOfFirstObj, indexOfLastObj);
+  const usersCurrentObj = users?.slice(indexOfFirstObj, indexOfLastObj);
+  const searchedUsersCurrentObj = searchResults?.slice(indexOfFirstObj, indexOfLastObj);
 
   const handleRemove = (id) => {
     setUsers(users.filter((user) => !(user.id === id)));
   };
+  
   users.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <div>
-      <Search />
+      <Search search={handleSearch} />
       <ListGroup>
-        {currentObj.map((user) => (
+        {usersCurrentObj.map((user) => (
           <SingleUser
             name={user.name}
             lastName={user.lastName}

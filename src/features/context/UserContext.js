@@ -40,6 +40,15 @@ export const UserProvider = (props) => {
       key: "deividas-ponaitis",
       id: "deividas-ponaitis",
     },
+    {
+      name: "Lina",
+      lastName: "Rita",
+      address: "Jurbarko g.",
+      country: "Australia",
+      email: "labas@lina.lt",
+      key: "lina-rita",
+      id: "lina-rita",
+    },
   ]);
 
   return (
