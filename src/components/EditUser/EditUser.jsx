@@ -15,12 +15,11 @@ export const EditUser = () => {
   const [countries, setCountries] = useState();
   const [email, setEmail] = useState("");
   const [users, setUsers] = useContext(UserContext);
-
+  // Takes the current id from route and sets the current user by that id
   const { id } = useParams();
   const currentUser = users.filter((user) => user.id === id);
 
   const [data, setData] = useState([]);
-
   useEffect(() => {
     axios.get("https://restcountries.com/v3.1/all").then((response) => {
       const countryList = response.data.map((countries) => {
@@ -29,25 +28,8 @@ export const EditUser = () => {
       setData(...data, countryList);
     });
   }, []);
-
+  // Form validation and handle
   const navigate = useNavigate();
-
-  const updateName = (e) => {
-    setName(e.target.value);
-  };
-  const updateLastName = (e) => {
-    setLastName(e.target.value);
-  };
-  const updateAddress = (e) => {
-    setAddress(e.target.value);
-  };
-  const updateCountries = (e) => {
-    setCountries(e.target.value);
-  };
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
   const handleSubmit = (event) => {
     const form = event.currentTarget;
 
@@ -82,6 +64,21 @@ export const EditUser = () => {
       ]);
       navigate("/");
     }
+  };
+  const updateName = (e) => {
+    setName(e.target.value);
+  };
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
+  };
+  const updateAddress = (e) => {
+    setAddress(e.target.value);
+  };
+  const updateCountries = (e) => {
+    setCountries(e.target.value);
+  };
+  const updateEmail = (e) => {
+    setEmail(e.target.value);
   };
 
   return (

@@ -2,7 +2,7 @@ import { useNavigate, useRoutes } from "react-router-dom";
 import { getRoutes } from "./components/routes";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { UserProvider } from "./features/context/UserContext";
-import { SearchProvider } from "./features/context/StatesContext";
+import { SearchProvider } from "./features/context/SearchContext";
 
 function App() {
   const appRoutesElement = useRoutes(getRoutes());
@@ -12,7 +12,7 @@ function App() {
   return (
     <UserProvider>
       <SearchProvider>
-        <div>{appRoutesElement}</div>;
+        <>{appRoutesElement}</>;
       </SearchProvider>
     </UserProvider>
   );

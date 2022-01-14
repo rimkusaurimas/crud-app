@@ -1,15 +1,13 @@
 import React, { useState, useContext } from "react";
 import styles from "./search.module.scss";
-import { SearchResultsContext } from "../../features/context/StatesContext";
+import { SearchResultsContext } from "../../features/context/SearchContext";
 import { Form, Button } from "react-bootstrap";
 import { UserContext } from "../../features/context/UserContext";
 
 export const Search = (props) => {
-  const [validated, setValidated] = useState(false);
   const [users] = useContext(UserContext);
-
+  // Search
   const [searchTerm, setSearchTerm] = useContext(SearchResultsContext);
-
   const searchedObj = users.filter((val) => {
     if (
       val.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -18,7 +16,8 @@ export const Search = (props) => {
       return val;
     }
   });
-
+  // Form validation
+  const [validated, setValidated] = useState(false);
   const handleSearch = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -27,11 +26,8 @@ export const Search = (props) => {
     }
     event.preventDefault();
     props.search(searchedObj);
-    setSearchTerm("");
     setValidated(true);
   };
-
-  console.log(searchTerm);
 
   return (
     <>

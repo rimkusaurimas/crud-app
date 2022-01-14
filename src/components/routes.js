@@ -16,5 +16,5 @@ export const getRoutes = () => [
       { path: "/edit-user/:id", element: <EditUser />, name: "edit-user" },
     ],
   },
-  { path: "/*", element: <NotFound /> },
+  { path: "/*", element: <NotFound />, name: "404" },
 ];

@@ -3,28 +3,28 @@ import { ListGroup } from "reactstrap";
 import { Button } from "react-bootstrap";
 import { SingleUser } from "./SingleUser/SingleUser";
 import { UserContext } from "../../features/context/UserContext";
-import { SearchResultsContext } from "../../features/context/StatesContext";
+import { SearchResultsContext } from "../../features/context/SearchContext";
 import { Pagination } from "../Pagination";
 import { Search } from "../Search";
 
 export const UserList = () => {
   const [users, setUsers] = useContext(UserContext);
-  const [searchTerm] = useContext(SearchResultsContext);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [objPerPage] = useState(3);
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
+  // Search
+  const [searchTerm, setSearchTerm] = useContext(SearchResultsContext);
   const [searchResults, setSearchResults] = useState();
   const handleSearch = (searchResults) => {
     setSearchResults(searchResults);
   };
   const resetSearch = () => {
+    setSearchTerm("");
     setSearchResults();
   };
-
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [objPerPage] = useState(3);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
   const indexOfLastObj = currentPage * objPerPage;
   const indexOfFirstObj = indexOfLastObj - objPerPage;
   const usersCurrentObj = users?.slice(indexOfFirstObj, indexOfLastObj);
@@ -32,11 +32,11 @@ export const UserList = () => {
     indexOfFirstObj,
     indexOfLastObj
   );
-
+  // User delete
   const handleRemove = (id) => {
     setUsers(users.filter((user) => !(user.id === id)));
   };
-
+  // User sorting by name
   users.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
