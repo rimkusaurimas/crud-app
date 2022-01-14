@@ -12,7 +12,7 @@ function App() {
   return (
     <UserProvider>
       <SearchProvider>
-        <>{appRoutesElement}</>;
+        <>{appRoutesElement}</>
       </SearchProvider>
     </UserProvider>
   );

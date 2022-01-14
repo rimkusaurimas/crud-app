@@ -8,17 +8,17 @@ import { UserContext } from "../../features/context/UserContext";
 export const MainPage = () => {
   const [users] = useContext(UserContext);
   return (
-    <div className={styles.mobile}>
-      <section className={styles.mainWidget}>
+    <section className={styles.mobile}>
+      <div className={styles.mainWidget}>
         <h2 className={styles.mainWidgetTitle}>Add yourself ➜</h2>
         <Link to={"/add-user"}>
           <Button variant="primary text-uppercase">add user</Button>
         </Link>
-      </section>
+      </div>
       <UserList />
       {users.length === 0 && (
         <p className="text-center mt-3">No users to show...</p>
       )}
-    </div>
+    </section>
   );
 };
