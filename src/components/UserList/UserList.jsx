@@ -39,6 +39,12 @@ export const UserList = () => {
   );
   // User delete
   const handleRemove = (id) => {
+    if (
+      (searchResults?.length !== users.length && searchTerm !== undefined) ||
+      searchTerm !== ""
+    ) {
+      setSearchResults(searchResults.filter((user) => !(user.id === id)));
+    }
     setUsers(users.filter((user) => !(user.id === id)));
   };
   // User sorting by name
