@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
 import { ListGroup } from "reactstrap";
+import { Button } from "react-bootstrap";
 import { SingleUser } from "./SingleUser/SingleUser";
 import { UserContext } from "../../features/context/UserContext";
+import { SearchResultsContext } from "../../features/context/StatesContext";
 import { Pagination } from "../Pagination";
 import { Search } from "../Search";
 
 export const UserList = () => {
   const [users, setUsers] = useContext(UserContext);
+  const [searchTerm, setSearchTerm] = useContext(SearchResultsContext);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [objPerPage] = useState(3);
@@ -34,8 +37,18 @@ export const UserList = () => {
   users.sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <div>
+    <>
       <Search search={handleSearch} />
+      {searchResults !== undefined &&
+        searchTerm.length !== 0 &&
+        users.length !== searchResults.length && (
+          <Button
+            className="mt-3 d-flex justify-content-center text-uppercase w-100"
+            variant="secondary"
+          >
+            Back to all users
+          </Button>
+        )}
       <ListGroup>
         {searchResults !== undefined
           ? searchedUsersCurrentObj?.map((user) => (
@@ -78,6 +91,11 @@ export const UserList = () => {
               paginate={paginate}
             />
           )}
-    </div>
+      {searchResults?.length === 0 && (
+        <p className="text-center mt-3">
+          User "{searchTerm}" cannot be found...
+        </p>
+      )}
+    </>
   );
 };
