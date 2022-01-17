@@ -1,0 +1,11 @@
+@import "../../styles/_base.scss";
+
+.pagination {
+  &PageLink {
+    color: $primary-color !important;
+
+    &:focus {
+        box-shadow: none !important;
+    }
+  }
+}
