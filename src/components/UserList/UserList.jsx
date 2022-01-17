@@ -34,7 +34,7 @@ export const UserList = () => {
     setCurrentPage(pageNumber);
   };
   useEffect(() => {
-    if (objPerPage >= users.length) {
+    if (objPerPage >= users.length || objPerPage >= searchResults?.length) {
       setCurrentPage(1);
     }
   }, [users]);
