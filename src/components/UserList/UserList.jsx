@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ListGroup } from "reactstrap";
 import { Button } from "react-bootstrap";
 import { SingleUser } from "./SingleUser/SingleUser";
@@ -20,6 +20,7 @@ export const UserList = () => {
     ) {
       setSearchResults(searchResults);
       setSearchHistory(searchTerm);
+      setCurrentPage(1);
     }
   };
   const resetSearch = () => {
@@ -32,12 +33,11 @@ export const UserList = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  // console.log(currentPage);
-  // console.log(objPerPage);
-  // console.log(users.length);
-  // console.log(searchResults?.length);
-
+  useEffect(() => {
+    if (objPerPage >= users.length) {
+      setCurrentPage(1);
+    }
+  }, [users]);
   const indexOfLastObj = currentPage * objPerPage;
   const indexOfFirstObj = indexOfLastObj - objPerPage;
   const usersCurrentObj = users?.slice(indexOfFirstObj, indexOfLastObj);
