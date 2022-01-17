@@ -37,7 +37,7 @@ export const UserList = () => {
     if (objPerPage >= users.length || objPerPage >= searchResults?.length) {
       setCurrentPage(1);
     }
-  }, [users]);
+  }, [users, objPerPage,searchResults]);
   const indexOfLastObj = currentPage * objPerPage;
   const indexOfFirstObj = indexOfLastObj - objPerPage;
   const usersCurrentObj = users?.slice(indexOfFirstObj, indexOfLastObj);
