@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useNavigate, useRoutes } from "react-router-dom";
+import { getRoutes } from "./components/routes";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { UserProvider } from "./features/context/UserContext";
+import { SearchProvider } from "./features/context/SearchContext";
 
 function App() {
+  const appRoutesElement = useRoutes(getRoutes());
+
+  useNavigate("/home");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserProvider>
+      <SearchProvider>
+        <>{appRoutesElement}</>
+      </SearchProvider>
+    </UserProvider>
   );
 }
 
