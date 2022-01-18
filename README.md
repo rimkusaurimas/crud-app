@@ -1,3 +1,10 @@
+# CRUD using ReactJS
+
+This is an app with a user list. You can add, delete or edit any users. The "Country" field of the user - https://restcountries.com/ . 
+Other functionalities includes pagination and search of users.
+
+# Stuff used: Bootstrap, SCSS modules, global styles, ReactJS, axios, React Context API.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
