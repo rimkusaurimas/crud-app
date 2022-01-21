@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate, useRoutes } from "react-router-dom";
 import { getRoutes } from "./components/routes";
 import "bootstrap/dist/css/bootstrap.min.css";

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { ListGroupItem, Button } from "reactstrap";
 import styles from "./single-user.module.scss";
@@ -25,7 +26,10 @@ export const SingleUser = ({
       </div>
       <div className={`ml-auto ${styles.buttons}`}>
         <Link className="w-100" to={`edit-user/${id}`}>
-          <Button color="secondary" className={`btn me-1 text-uppercase ${styles.buttonsEdit}`}>
+          <Button
+            color="secondary"
+            className={`btn me-1 text-uppercase ${styles.buttonsEdit}`}
+          >
             Edit
           </Button>
         </Link>
@@ -40,4 +44,14 @@ export const SingleUser = ({
       </div>
     </ListGroupItem>
   );
+};
+
+SingleUser.propTypes = {
+  name: PropTypes.any,
+  lastName: PropTypes.any,
+  address: PropTypes.any,
+  country: PropTypes.any,
+  remove: PropTypes.any,
+  email: PropTypes.any,
+  id: PropTypes.any,
 };

@@ -37,7 +37,7 @@ export const UserList = () => {
     if (objPerPage >= users.length || objPerPage >= searchResults?.length) {
       setCurrentPage(1);
     }
-  }, [users, objPerPage,searchResults]);
+  }, [users, objPerPage, searchResults]);
   const indexOfLastObj = currentPage * objPerPage;
   const indexOfFirstObj = indexOfLastObj - objPerPage;
   const usersCurrentObj = users?.slice(indexOfFirstObj, indexOfLastObj);
@@ -114,7 +114,7 @@ export const UserList = () => {
           )}
       {searchResults?.length === 0 && searchHistory !== "" && (
         <p className="text-center mt-3">
-          User "{searchHistory}" cannot be found...
+          User &#34;{searchHistory}&#34; cannot be found...
         </p>
       )}
     </>
