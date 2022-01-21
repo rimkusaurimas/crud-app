@@ -3,7 +3,7 @@
     "stylelint-config-sass-guidelines",
     "stylelint-config-prettier"
   ],
-  "plugins": ["stylelint-declaration-strict-value, stylelint-prettier"],
+  "plugins": ["stylelint-declaration-strict-value", "stylelint-prettier", "stylelint-order"],
   "ignoreFiles": ["**/src/scss/vendor/**/*.scss"],
   "rules": {
     "at-rule-no-unknown": [
