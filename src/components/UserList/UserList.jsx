@@ -83,7 +83,7 @@ export const UserList = () => {
         className="mt-3 w-100 shadow-none"
         onClose={() => setShowToast(false)}
         show={showToast}
-        delay={3000}
+        delay={5000}
         autohide
       >
         <Toast.Header>

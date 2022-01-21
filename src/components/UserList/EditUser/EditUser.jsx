@@ -94,7 +94,7 @@ export const EditUser = () => {
             value={name}
             name="name"
             placeholder={currentUser[0].name}
-            aria-label={currentUser[0].name}
+            aria-label={`First name: ${currentUser[0].name}`}
             required
           />
         </InputGroup>
@@ -107,7 +107,7 @@ export const EditUser = () => {
             value={lastName}
             name="lastName"
             placeholder={currentUser[0].lastName}
-            aria-label={currentUser[0].lastName}
+            aria-label={`Last name: ${currentUser[0].lastName}`}
             required
           />
         </InputGroup>
@@ -120,7 +120,7 @@ export const EditUser = () => {
             value={address}
             name="address"
             placeholder={currentUser[0].address}
-            aria-label={currentUser[0].address}
+            aria-label={`Address: ${currentUser[0].address}`}
             required
           />
         </InputGroup>
@@ -134,7 +134,7 @@ export const EditUser = () => {
             name="email"
             type="email"
             placeholder={currentUser[0].email}
-            aria-label={currentUser[0].email}
+            aria-label={`Email: ${currentUser[0].email}`}
             required
           />
         </InputGroup>
@@ -148,7 +148,7 @@ export const EditUser = () => {
             name="countries"
             className={styles.editUserCountrySelect}
             id="countries"
-            aria-label="Countries"
+            aria-label="Country list"
             required
           >
             <option className={styles.addUserCountrySelect} value="">
@@ -159,6 +159,7 @@ export const EditUser = () => {
                 className={styles.editUserCountrySelect}
                 key={country}
                 value={country}
+                aria-label={`Country: ${country}`}
               >
                 {country}
               </option>
