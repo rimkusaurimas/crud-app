@@ -1,7 +1,4 @@
 {
-  "extends": [
-    "prettier"
-  ],
   "arrowParens": "always",
   "endOfLine": "auto",
   "trailingComma": "es5",
