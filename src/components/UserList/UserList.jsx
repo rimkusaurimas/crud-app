@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ListGroup } from "reactstrap";
-import { Button } from "react-bootstrap";
+import { Button, Toast } from "react-bootstrap";
 import { SingleUser } from "./SingleUser/SingleUser";
 import { UserContext } from "../../features/context/UserContext";
 import { SearchResultsContext } from "../../features/context/SearchContext";
@@ -45,8 +45,16 @@ export const UserList = () => {
     indexOfFirstObj,
     indexOfLastObj
   );
+  // Toast
+  const [showToast, setShowToast] = useState(false);
   // User delete
+  const [removedUser, setRemovedUser] = useState("");
   const handleRemove = (id) => {
+    setRemovedUser(
+      users.filter((user) => user.id === id)[0].name +
+        " " +
+        users.filter((user) => user.id === id)[0].lastName
+    );
     if (
       (searchResults?.length !== users.length && searchResults !== undefined) ||
       searchTerm !== ""
@@ -54,6 +62,7 @@ export const UserList = () => {
       setSearchResults(searchResults.filter((user) => !(user.id === id)));
     }
     setUsers(users.filter((user) => !(user.id === id)));
+    setShowToast(true);
   };
   // User sorting by name
   users.sort((a, b) => a.name.localeCompare(b.name));
@@ -70,6 +79,19 @@ export const UserList = () => {
           Back to all users
         </Button>
       )}
+      <Toast
+        className="mt-3 w-100 shadow-none"
+        onClose={() => setShowToast(false)}
+        show={showToast}
+        delay={3000}
+        autohide
+      >
+        <Toast.Header>
+          <strong className="me-auto text-uppercase text-dark">
+            User {removedUser} <span className="text-danger">deleted</span>
+          </strong>
+        </Toast.Header>
+      </Toast>
       <ListGroup>
         {searchResults !== undefined
           ? searchedUsersCurrentObj?.map((user) => (
