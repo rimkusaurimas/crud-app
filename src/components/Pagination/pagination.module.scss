@@ -1,11 +1,9 @@
 @import '../../styles/base';
 
-.pagination {
-  &PageLink {
-    color: $primary-color !important;
+.paginationPageLink {
+  color: $primary-color !important;
 
-    &:focus {
-        box-shadow: none !important;
-    }
+  &:focus {
+    box-shadow: none !important;
   }
 }
