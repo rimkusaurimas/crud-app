@@ -50,11 +50,8 @@ export const UserList = () => {
   // User delete
   const [removedUser, setRemovedUser] = useState("");
   const handleRemove = (id) => {
-    setRemovedUser(
-      users.filter((user) => user.id === id)[0].name +
-        " " +
-        users.filter((user) => user.id === id)[0].lastName
-    );
+    const filterUser = users.filter((user) => user.id === id);
+    setRemovedUser(filterUser[0].name + " " + filterUser[0].lastName);
     if (
       (searchResults?.length !== users.length && searchResults !== undefined) ||
       searchTerm !== ""
