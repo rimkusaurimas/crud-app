@@ -33,7 +33,7 @@ export const Pagination = ({ objPerPage, totalObj, paginate }) => {
 };
 
 Pagination.propTypes = {
-  objPerPage: PropTypes.any,
-  totalObj: PropTypes.any,
-  paginate: PropTypes.any,
+  objPerPage: PropTypes.number,
+  totalObj: PropTypes.number,
+  paginate: PropTypes.func,
 };

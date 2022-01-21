@@ -47,11 +47,11 @@ export const SingleUser = ({
 };
 
 SingleUser.propTypes = {
-  name: PropTypes.any,
-  lastName: PropTypes.any,
-  address: PropTypes.any,
-  country: PropTypes.any,
-  remove: PropTypes.any,
-  email: PropTypes.any,
-  id: PropTypes.any,
+  name: PropTypes.string,
+  lastName: PropTypes.string,
+  address: PropTypes.string,
+  country: PropTypes.string,
+  remove: PropTypes.func,
+  email: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
