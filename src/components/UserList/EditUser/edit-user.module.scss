@@ -1,4 +1,4 @@
-@import "../../../styles/base";
+@import '../../../styles/base';
 
 .editUser {
   max-width: 23rem;
@@ -17,11 +17,11 @@
     &Title {
       align-items: center;
       background-color: $tertiary-color;
-      border-bottom-right-radius: 0 !important;
-      border-radius: 0.25rem;
-      border-right: none !important;
-      border-top-right-radius: 0;
       border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      border-bottom-right-radius: 0 !important;
+      border-right: 0 !important;
+      border-top-right-radius: 0;
       color: #212529;
       display: flex;
       font-size: 1rem;

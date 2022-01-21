@@ -1,13 +1,13 @@
 @import '../../styles/base';
 
 .mainWidget {
-  display: flex;
-  min-width: 30rem;
-  justify-content: space-between;
-  padding: $default-padding;
   align-items: center;
   border: 0.1rem solid $primary-color;
   border-radius: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+  min-width: 30rem;
+  padding: $default-padding;
 
   &Title {
     margin: 0;

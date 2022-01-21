@@ -1,4 +1,4 @@
-@import "../../../styles/base";
+@import '../../../styles/base';
 
 @media only screen and (max-width: 768px) {
   .buttons {
@@ -8,9 +8,9 @@
     justify-content: center;
 
     &Edit {
+      width: 100%;
       margin-bottom: 0.5rem;
       margin-right: unset !important;
-      width: 100%;
     }
   }
 }
