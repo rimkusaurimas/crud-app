@@ -8,6 +8,7 @@ export const Search = (props) => {
   const [users] = useContext(UserContext);
   // Search
   const [searchTerm, setSearchTerm] = useContext(SearchResultsContext);
+  // eslint-disable-next-line
   const searchedObj = users.filter((val) => {
     if (
       val.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

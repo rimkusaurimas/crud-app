@@ -27,6 +27,7 @@ export const EditUser = () => {
       });
       setData(...data, countryList);
     });
+    // eslint-disable-next-line
   }, []);
   // Form validation and handle
   const navigate = useNavigate();

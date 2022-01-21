@@ -14,7 +14,7 @@ export const AddUser = () => {
   const [address, setAddress] = useState("");
   const [countries, setCountries] = useState();
   const [email, setEmail] = useState("");
-  const [users, setUsers] = useContext(UserContext);
+  const [setUsers] = useContext(UserContext);
   // API calling
   const [apiData, setApiData] = useState([]);
   useEffect(() => {
@@ -24,6 +24,7 @@ export const AddUser = () => {
       });
       setApiData(...apiData, countryList);
     });
+    // eslint-disable-next-line
   }, []);
   // Form validation and handle
   const navigate = useNavigate();
