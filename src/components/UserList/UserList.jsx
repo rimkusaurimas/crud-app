@@ -85,7 +85,8 @@ export const UserList = () => {
       >
         <Toast.Header>
           <strong className="me-auto text-uppercase text-dark">
-            User {removedUser} <span className="text-danger">deleted</span>
+            User &#34;{removedUser}&#34;{" "}
+            <span className="text-danger">deleted</span>
           </strong>
         </Toast.Header>
       </Toast>
