@@ -14,7 +14,8 @@ export const AddUser = () => {
   const [address, setAddress] = useState("");
   const [countries, setCountries] = useState();
   const [email, setEmail] = useState("");
-  const [setUsers] = useContext(UserContext);
+  // eslint-disable-next-line
+  const [users, setUsers] = useContext(UserContext);
   // API calling
   const [apiData, setApiData] = useState([]);
   useEffect(() => {
