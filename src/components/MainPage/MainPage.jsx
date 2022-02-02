@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import { UserList } from "../UserList/UserList";
+import { UserList } from "../UserList";
 import styles from "./main-page.module.scss";
 import { UserContext } from "../../features/context/UserContext";
 

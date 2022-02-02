@@ -1,4 +1,4 @@
-@import "../../styles/_base.scss";
+@import '../../../styles/base';
 
 .editUser {
   max-width: 23rem;
@@ -8,20 +8,20 @@
   }
 
   &Country {
-    display: flex;
     align-items: center;
-    margin-top: 1rem;
-    border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    display: flex;
+    margin-top: 1rem;
 
     &Title {
       align-items: center;
       background-color: $tertiary-color;
-      border-bottom-right-radius: 0 !important;
-      border-radius: 0.25rem;
-      border-right: none !important;
-      border-top-right-radius: 0;
       border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      border-bottom-right-radius: 0 !important;
+      border-right: 0 !important;
+      border-top-right-radius: 0;
       color: #212529;
       display: flex;
       font-size: 1rem;
@@ -35,17 +35,17 @@
     }
 
     &Select {
-      border-top-left-radius: 0 !important;
       border-bottom-left-radius: 0 !important;
-      width: 15rem !important;
+      border-top-left-radius: 0 !important;
       color: #6c757d !important;
+      width: 15rem !important;
     }
   }
 
   &Button,
   &CancelButton {
+    margin-top: 1rem;
     text-transform: uppercase;
     width: 100%;
-    margin-top: 1rem;
   }
 }

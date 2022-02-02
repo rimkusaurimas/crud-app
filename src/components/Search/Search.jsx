@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import styles from "./search.module.scss";
 import { SearchResultsContext } from "../../features/context/SearchContext";
 import { Form, Button } from "react-bootstrap";
@@ -8,6 +9,7 @@ export const Search = (props) => {
   const [users] = useContext(UserContext);
   // Search
   const [searchTerm, setSearchTerm] = useContext(SearchResultsContext);
+  // eslint-disable-next-line
   const searchedObj = users.filter((val) => {
     if (
       val.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -56,4 +58,8 @@ export const Search = (props) => {
       </Form>
     </>
   );
+};
+
+Search.propTypes = {
+  search: PropTypes.any,
 };

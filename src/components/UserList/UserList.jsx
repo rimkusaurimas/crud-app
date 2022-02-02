@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ListGroup } from "reactstrap";
-import { Button } from "react-bootstrap";
+import { Button, Toast } from "react-bootstrap";
 import { SingleUser } from "./SingleUser/SingleUser";
 import { UserContext } from "../../features/context/UserContext";
 import { SearchResultsContext } from "../../features/context/SearchContext";
@@ -37,7 +37,7 @@ export const UserList = () => {
     if (objPerPage >= users.length || objPerPage >= searchResults?.length) {
       setCurrentPage(1);
     }
-  }, [users, objPerPage,searchResults]);
+  }, [users, objPerPage, searchResults]);
   const indexOfLastObj = currentPage * objPerPage;
   const indexOfFirstObj = indexOfLastObj - objPerPage;
   const usersCurrentObj = users?.slice(indexOfFirstObj, indexOfLastObj);
@@ -45,8 +45,13 @@ export const UserList = () => {
     indexOfFirstObj,
     indexOfLastObj
   );
+  // Toast
+  const [showToast, setShowToast] = useState(false);
   // User delete
+  const [removedUser, setRemovedUser] = useState("");
   const handleRemove = (id) => {
+    const filterUser = users.filter((user) => user.id === id);
+    setRemovedUser(filterUser[0].name + " " + filterUser[0].lastName);
     if (
       (searchResults?.length !== users.length && searchResults !== undefined) ||
       searchTerm !== ""
@@ -54,6 +59,7 @@ export const UserList = () => {
       setSearchResults(searchResults.filter((user) => !(user.id === id)));
     }
     setUsers(users.filter((user) => !(user.id === id)));
+    setShowToast(true);
   };
   // User sorting by name
   users.sort((a, b) => a.name.localeCompare(b.name));
@@ -70,6 +76,20 @@ export const UserList = () => {
           Back to all users
         </Button>
       )}
+      <Toast
+        className="mt-3 w-100 shadow-none"
+        onClose={() => setShowToast(false)}
+        show={showToast}
+        delay={5000}
+        autohide
+      >
+        <Toast.Header>
+          <strong className="me-auto text-uppercase text-dark">
+            User &#34;{removedUser}&#34;{" "}
+            <span className="text-danger">deleted</span>
+          </strong>
+        </Toast.Header>
+      </Toast>
       <ListGroup>
         {searchResults !== undefined
           ? searchedUsersCurrentObj?.map((user) => (
@@ -114,7 +134,7 @@ export const UserList = () => {
           )}
       {searchResults?.length === 0 && searchHistory !== "" && (
         <p className="text-center mt-3">
-          User "{searchHistory}" cannot be found...
+          User &#34;{searchHistory}&#34; cannot be found...
         </p>
       )}
     </>

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./pagination.module.scss";
 
@@ -29,4 +30,10 @@ export const Pagination = ({ objPerPage, totalObj, paginate }) => {
       </ul>
     </nav>
   );
+};
+
+Pagination.propTypes = {
+  objPerPage: PropTypes.number,
+  totalObj: PropTypes.number,
+  paginate: PropTypes.func,
 };

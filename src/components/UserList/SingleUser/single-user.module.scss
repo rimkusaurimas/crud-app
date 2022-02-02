@@ -1,16 +1,16 @@
-@import "../../../styles/_base.scss";
+@import '../../../styles/base';
 
 @media only screen and (max-width: 768px) {
   .buttons {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     &Edit {
-      margin-right: unset !important;
-      margin-bottom: 0.5rem;
       width: 100%;
+      margin-bottom: 0.5rem;
+      margin-right: unset !important;
     }
   }
 }

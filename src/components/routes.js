@@ -2,8 +2,8 @@ import React from "react";
 import { MainPage } from "./MainPage";
 import { Home } from "./Home";
 import { NotFound } from "./NotFound";
-import { AddUser } from "./AddUser";
-import { EditUser } from "./EditUser";
+import { AddUser } from "./UserList/AddUser";
+import { EditUser } from "./UserList/EditUser";
 
 export const getRoutes = () => [
   {
